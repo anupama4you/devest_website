@@ -1,0 +1,49 @@
+
+navigation .navbar{
+    padding: .9rem;
+}
+
+navigation .navbar-nav li{
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+navigation .nav-link{
+    font-size: 1.1em !important;
+}
+
+navigation .navbar-brand img{
+    width: 80%;
+    height: 80%;
+}
+
+navigation .fixed-top.scrolled {
+    background-color: #0A0945 !important;
+    transition: background-color 200ms linear;
+}
+
+/* navbar dark */
+
+navigation_dark .navbar{
+    padding: .9rem;
+}
+
+navigation_dark .navbar-nav li{
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+navigation_dark .nav-link{
+    font-size: 1.1em !important;
+}
+
+navigation_dark .navbar-brand img{
+    width: 80%;
+    height: 80%;
+}
+
+navigation_dark .fixed-top.scrolled {
+    background-color: white !important;
+    transition: background-color 200ms linear;
+}
+
