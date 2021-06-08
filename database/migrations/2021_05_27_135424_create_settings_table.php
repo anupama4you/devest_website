@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('key');
-            $table->enum('type',['number','string','text']);
+            $table->enum('type',['text','number','long_text','image_url']);
             $table->longText('value');
             $table->timestamps();
         });

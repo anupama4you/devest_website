@@ -20,6 +20,15 @@
       ),
       'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
     ),
+    'barryvdh/laravel-debugbar' => 
+    array (
+      'pretty_version' => 'v3.6.1',
+      'version' => '3.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6f0f895a33cac801286a74355d146bb5384a5da',
+    ),
     'barryvdh/laravel-ide-helper' => 
     array (
       'pretty_version' => 'v2.10.0',
@@ -627,6 +636,15 @@
       ),
       'reference' => '3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3',
     ),
+    'maximebf/debugbar' => 
+    array (
+      'pretty_version' => 'v1.16.5',
+      'version' => '1.16.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6d51ee9e94cff14412783785e79a4e7ef97b9d62',
+    ),
     'mockery/mockery' => 
     array (
       'pretty_version' => '1.4.3',
@@ -1155,6 +1173,15 @@
       array (
       ),
       'reference' => '5d5f97809015102116208b976eb2edb44b689560',
+    ),
+    'symfony/debug' => 
+    array (
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a8d2d5c94438548bff9f998ca874e202bb29d07f',
     ),
     'symfony/deprecation-contracts' => 
     array (

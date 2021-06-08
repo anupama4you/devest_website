@@ -32,4 +32,9 @@ Route::get('/blog', [HomeController::class,'getBlog'])->name('blog');
 
 Route::get('admin', [HomeController::class,'showAdmin'])->name('admin.index');
 
-Route::resource('admin/settings',SettingController::class);
+Route::resources([
+    'admin/page' => PageController::class,
+    'admin/portfolio' => PortfolioController::class,
+    'admin/client' => ClientController::class,
+    'admin/settings' => SettingController::class
+]);

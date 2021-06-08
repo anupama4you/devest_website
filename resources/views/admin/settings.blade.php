@@ -9,80 +9,81 @@
                 <h2>Settings</h2>
             </div>
 
-        <!-- Vertical Layout -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Settings
-                        </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form>
-                            @foreach($settings as $field)
-                                @switch($field->type)
-                                    @case('string')
-                                        <!--text field-->
-                                        <label for="email_address">String</label>
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <!-- section -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Settings update
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form action="{{ route('settings.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            @foreach($settings as $setting)
+
+                                @switch($setting->type)
+                                    @case('text')
+                                    <!--text field-->
+                                        <label for="settings[{{$setting->id}}]">{{ $setting->key }}</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="email_address" class="form-control" placeholder="Enter your email address">
+                                                <input type="text" id="settings[{{$setting->id}}]" name="settings[{{$setting->id}}]" value="{{ $setting->value }}" class="form-control" placeholder="Enter your text">
                                             </div>
                                         </div>
                                         <!--text field-->
-                                    @break
-
-                                    @case('text')
-                                    <!--ck editor-->
-                                        <label for="email_address">Text</label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                        <textarea id="ckeditor">
-
-                                        </textarea>
-                                                </div>
-                                            </div>
-                                        <!--ck editor-->
                                     @break
 
                                     @case('number')
-                                        <!--text field-->
-                                        <label for="email_address">Number</label>
+                                    <!--text field-->
+                                        <label for="settings[{{$setting->id}}]">{{ $setting->key }}</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="number" id="email_address" class="form-control" placeholder="Enter your email address">
+                                                <input type="number" id="settings[{{$setting->id}}]" name="settings[{{$setting->id}}]" value="{{ $setting->value }}" class="form-control" placeholder="Enter your number">
                                             </div>
                                         </div>
                                         <!--text field-->
                                     @break
 
-                                    @default
+                                    @case('long_text')
+                                    <!--ck editor-->
+                                        <label for="settings[{{$setting->id}}]">{{ $setting->key }}</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea placeholder="Enter your embed code" class="ckeditor" name="settings[{{$setting->id}}]">{!! $setting->value !!}</textarea>
+                                            </div>
+                                        </div>
+                                        <!--ck editor-->
+                                    @break
 
-                            @endswitch
+                                    @case('image_url')
+                                    <!--text field-->
+                                        <label for="settings[{{$setting->id}}]">{{ $setting->key }}</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="file" id="settings[{{$setting->id}}]" name="settings[{{$setting->id}}]" onchange="readURL(this);" class="form-control upload_file" accept="image/png, image/jpeg, image/jpg">
+                                                <img src="{{ asset('images/settings/'.$setting->value) }}" id="upload_preview"  style="width: 250px; height: auto;" alt="Image preview...">
+                                            </div>
+                                        </div>
+                                        <!--text field-->
+                                        @break
 
-                            @endforeach
+                                        @default
 
+                                    @endswitch
+
+                                @endforeach
+                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">UPDATE</button>
+                            </form>
                             <br>
-                            <button type="button" class="btn btn-primary m-t-15 waves-effect">UPDATE</button>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- #END# Vertical Layout -->
-        </div>
 
 @endsection

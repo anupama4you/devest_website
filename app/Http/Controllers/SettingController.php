@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::all();
-        return view('admin.settings',['settings'=>$settings]);
+        $setting = Setting::all();
+        return view('admin.settings',['settings'=>$setting]);
     }
 
     /**
@@ -36,7 +37,20 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request['settings']);
+
+        foreach ($request['settings'] as $key=>$setting){
+
+            $post = Setting::find($key);
+
+            if ($post->type == 'image_url'){
+                \Storage::disk('public')->putFileAs('images/settings',$setting, $setting);
+            }
+            Setting::where('id', $key)->update(['value'=>$setting]);
+        }
+
+        return redirect()->route('settings.index')
+            ->with('success','Settings updated successfully');
     }
 
     /**

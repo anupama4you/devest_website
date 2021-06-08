@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
+    <title>DEVEST ADMIN DASHBOARD</title>
     <!-- Favicon-->
     {!! Html::favicon('favicon.ico') !!}
 
@@ -14,8 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">composer require --dev barryvdh/laravel-ide-helper
-
+    <link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
@@ -32,13 +31,39 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
 
+    <!-- dropzone -->
+    {!! Html::script('js/dropzone.js') !!}
+    {!! Html::style('css/dropzone.css') !!}
+    {!! Html::style('css/basic.css') !!}
+
+<!--font awesome library-->
+    {!! Html::style('css/all.css') !!}
+
+    {!! Html::script('js/script.js') !!}
+
+
 </head>
 
 <body class="theme-red">
 
+
+<!--sweet alerts-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 @include('admin.partials._page_loader')
 @include('admin.partials._top_bar')
 @include('admin.partials._side_bar')
+
+@if ($message = Session::get('success'))
+    <script>
+        Swal.fire(
+            'Good job!',
+            '{{ $message }}',
+            'success'
+        )
+    </script>
+@endif
 
 @yield('content')
 
@@ -87,8 +112,14 @@
 <!-- CK Editor -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script>
-    CKEDITOR.replace( 'ckeditor' );
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
 </script>
+
+<!-- Image preview Js -->
+<script src="{{ asset('js/image_view.js') }}"></script>
+
 </body>
 
 </html>
